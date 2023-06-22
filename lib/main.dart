@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 // import 'package:get/get.dart';
 import 'package:task_1/View/first_Screen.dart';
-import 'package:task_1/const/routes/routes.dart';
+// import 'package:task_1/const/routes/routes.dart';
 // import 'package:task_1/const/responsive/res.dart';
 
 void main() {
