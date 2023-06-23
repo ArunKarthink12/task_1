@@ -136,30 +136,7 @@ class _Progress7thScreenState extends State<Progress7thScreen> {
                                           initialPage: 2,
                                         ),
                                       ),
-                                      // RaisedButton(
-                                      //   onPressed: () => buttonCarouselController.nextPage(
-                                      //       duration: Duration(milliseconds: 300), curve: Curves.linear),
-                                      //   child: Text('→'),
-                                      // )
-                                      // (
-                                      //   shrinkWrap: true,
-                                      //   itemCount: progressController
-                                      //       .selectedImages.length,
-                                      //   gridDelegate:
-                                      //       const SliverGridDelegateWithFixedCrossAxisCount(
-                                      //           crossAxisCount: 3),
-                                      //   itemBuilder:
-                                      //       (BuildContext context, int index) {
-                                      //     return Center(
-                                      //         child: kIsWeb
-                                      //             ? Image.network(progressController
-                                      //                 .selectedImages[index].path)
-                                      //             : Image.file(progressController
-                                      //                 .selectedImages[index]));
-                                      //   },
-                                      // ),
                                     ),
-                              // Image.file(
                               //     File(progressController.ibusinesslogo.path)),
                             ),
                           ),

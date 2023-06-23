@@ -50,7 +50,6 @@ class _MiniButtonModelState extends State<MiniButtonModel> {
     progressController.webSitUrl.text = '';
     progressController.email.text = '';
     progressController.selectedImages = [];
-
     Get.to(SecondScreen());
   }
 

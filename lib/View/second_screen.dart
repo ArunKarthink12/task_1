@@ -29,24 +29,14 @@ class _SecondScreenState extends State<SecondScreen> {
   void initState() {
     // TODO: implement initState
     // storage();
+    clear();
     super.initState();
   }
 
-  String? mail;
-  String? password;
-  // storage() async {
-  //   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-  //   mail = sharedPreferences.getString(
-  //     Constants.email,
-  //   );
-  //   password = sharedPreferences.getString(
-  //     Constants.password,
-  //   );
-  //   progressController.email.text =
-  //       progressController.userName.text.isEmpty ? mail.toString() : "";
-  //   progressController.logInPasWord.text =
-  //       progressController.logInPasWord.text.isEmpty ? mail.toString() : "";
-  // }
+  clear() {
+    progressController.loginuserName.text = '';
+    progressController.logInPasWord.text = '';
+  }
 
   bool select = true;
   ProgressController progressController = Get.put(ProgressController());
@@ -301,10 +291,10 @@ class _SecondScreenState extends State<SecondScreen> {
           Fluttertoast.showToast(msg: "Enter Password");
         } else if (progressController.logInPasWord.text.length < 6) {
           Fluttertoast.showToast(msg: "Password length Should 6 ");
-        } else if (progressController.loginuserName.text ==
-                progressController.userName.text &&
-            progressController.logInPasWord.text ==
-                progressController.passWord.text) {
+        } else if (progressController.userName.text ==
+                progressController.loginuserName.text &&
+            progressController.passWord.text ==
+                progressController.logInPasWord.text) {
           Fluttertoast.showToast(msg: "LogIn SuccessFully");
         } else {
           Fluttertoast.showToast(msg: "UnAuth LogIn ");

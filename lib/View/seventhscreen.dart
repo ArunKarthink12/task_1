@@ -44,7 +44,24 @@ class _Progress8thScreenState extends State<Progress8thScreen> {
           ),
           GestureDetector(
             onTap: () {
+//                progressController.MobileNumber.text.length==0?
+//               progressController.addressLine.text.length==0?
+//               progressController.businesslogo.path.isEmpty  ?
+//               progressController.city.text.length==0?
+//               progressController.currentLocation==''?
+//               progressController.description.text.length==0?
+//               progressController.pincode.text.length==0?
+//               progressController.webSitUrl.text.length==0?
+//               progressController.email.text.length==0?
+//               progressController.selectedImages.isEmpty
+//             ?
+// Fluttertoast.showToast(msg: "Sime Fields is Missing")
+//             :
+
+//             //  :
+
               Get.to(const FinalScreen());
+              // Get.to(const FinalScreen());
             },
             child: Container(
               height: 5.0.hp,

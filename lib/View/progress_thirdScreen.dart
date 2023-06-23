@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:task_1/const/responsive/res.dart';
@@ -96,6 +97,7 @@ class _ProgressThirdScreenState extends State<ProgressThirdScreen> {
             ),
             ProgressBarButtons(
               customizedWidget: TextFormField(
+                textAlign: TextAlign.center,
                 controller: progressController.city,
                 // obscureText: _isPinnewHidden,
                 style: GoogleFonts.jost(
@@ -121,7 +123,7 @@ class _ProgressThirdScreenState extends State<ProgressThirdScreen> {
                   ),
                   fillColor: const Color(0xffC6C6C6),
                   hintText: "City",
-                  contentPadding: EdgeInsets.only(left: 33.0.wp),
+                  contentPadding: EdgeInsets.only(top: 3.0.wp),
                   hintStyle: GoogleFonts.jost(
                       textStyle: TextStyle(
                           fontSize: 10.0.sp,
@@ -138,6 +140,7 @@ class _ProgressThirdScreenState extends State<ProgressThirdScreen> {
             ),
             ProgressBarButtons(
               customizedWidget: TextFormField(
+                textAlign: TextAlign.center,
                 controller: progressController.pincode,
                 // obscureText: _isPinnewHidden,
                 style: GoogleFonts.jost(
@@ -163,7 +166,7 @@ class _ProgressThirdScreenState extends State<ProgressThirdScreen> {
                   ),
                   fillColor: const Color(0xffC6C6C6),
                   hintText: "Pincode",
-                  contentPadding: EdgeInsets.only(left: 32.0.wp),
+                  contentPadding: EdgeInsets.only(top: 3.0.wp),
                   hintStyle: GoogleFonts.jost(
                       textStyle: TextStyle(
                           fontSize: 10.0.sp,
@@ -180,6 +183,7 @@ class _ProgressThirdScreenState extends State<ProgressThirdScreen> {
             ),
             ProgressBarButtons(
               customizedWidget: TextFormField(
+                textAlign: TextAlign.center,
                 controller: progressController.addressLine,
                 // obscureText: _isPinnewHidden,
                 style: GoogleFonts.jost(
@@ -205,7 +209,7 @@ class _ProgressThirdScreenState extends State<ProgressThirdScreen> {
                   ),
                   fillColor: const Color(0xffC6C6C6),
                   hintText: "Address Line",
-                  contentPadding: EdgeInsets.only(left: 27.0.wp),
+                  contentPadding: EdgeInsets.only(top: 3.0.wp),
                   hintStyle: GoogleFonts.jost(
                       textStyle: TextStyle(
                           fontSize: 10.0.sp,
@@ -222,8 +226,27 @@ class _ProgressThirdScreenState extends State<ProgressThirdScreen> {
             ),
             ProgressBarButtons(
               customizedWidget: TextFormField(
+                inputFormatters: [
+                  FilteringTextInputFormatter.allow(
+                    RegExp(
+                      r'^[-]{0,1}[0-9]*[,]?[0-9]*', //signed regex
+                      // r'^[0-9]*[,]?[0-9]*',
+                    ),
+                  ),
+                ],
+                // validator: (v) {
+                //   String patttern = r'(^(?:[+0]9)?[0-9]{10,12}$)';
+                //   RegExp regExp = new RegExp(patttern);
+                //   if (v!.isEmpty) {
+                //     return 'Please enter mobile number';
+                //   } else if (!regExp.hasMatch(v)) {
+                //     return 'Please enter valid mobile number';
+                //   }
+                //   return null;
+                // },
+                textAlign: TextAlign.center,
                 controller: progressController.MobileNumber,
-                // obscureText: _isPinnewHidden,
+                keyboardType: TextInputType.number,
                 style: GoogleFonts.jost(
                     textStyle: TextStyle(
                         fontSize: 10.0.sp,
@@ -247,7 +270,7 @@ class _ProgressThirdScreenState extends State<ProgressThirdScreen> {
                   ),
                   fillColor: const Color(0xffC6C6C6),
                   hintText: "Mobile Number",
-                  contentPadding: EdgeInsets.only(left: 25.0.wp),
+                  contentPadding: EdgeInsets.only(top: 3.0.wp),
                   hintStyle: GoogleFonts.jost(
                       textStyle: TextStyle(
                           fontSize: 10.0.sp,

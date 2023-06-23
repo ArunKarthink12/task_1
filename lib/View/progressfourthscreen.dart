@@ -70,15 +70,19 @@ class _ProgressFourthScreenState extends State<ProgressFourthScreen> {
                   setState(() {});
                 },
                 child: Container(
-                  color: Colors.amber,
+                  // color: Colors. ,
+
                   height: 30.0.hp,
                   width: 60.0.wp,
                   alignment: Alignment.center,
                   child: SingleChildScrollView(
                     scrollDirection: Axis.vertical,
-                    child: Text(progressController.currentLocation == ""
-                        ? "Map"
-                        : progressController.currentLocation.toString()),
+                    child: progressController.currentLocation == ""
+                        ? Image.asset(
+                            "image/googlemap.png",
+                            fit: BoxFit.cover,
+                          )
+                        : Text(progressController.currentLocation.toString()),
                   ),
                 ),
               )
