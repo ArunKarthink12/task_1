@@ -47,7 +47,7 @@ class _ProgressIndicatorWithIconState extends State<ProgressIndicatorWithIcon> {
       //  widget.percentage,
       alignment: MainAxisAlignment.center,
       barRadius: Radius.circular(5.0.sp),
-      backgroundColor: Colors.blue.shade900,
+      backgroundColor: Color(0xff134fb0),
       progressColor: Colors.white,
     );
   }

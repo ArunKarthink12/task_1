@@ -1,14 +1,20 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:task_1/View/secondscreen.dart';
-import 'package:task_1/View/thirdScreen.dart';
+import 'package:task_1/View/fifthScreen.dart';
+import 'package:task_1/View/progressfifthscreen.dart';
+import 'package:task_1/View/sixthscreen.dart';
+// import 'package:task_1/View/secondscreen.dart';
+// import 'package:task_1/View/thirdScreen.dart';
 import 'package:task_1/const/responsive/res.dart';
 import 'package:task_1/controller/progressbarcontroller.dart';
 import 'package:task_1/widgets/progressbar.dart';
 
 import 'progress2.dart';
 import 'progress_thirdScreen.dart';
+import 'progressfourthscreen.dart';
 
 class FourthScreen extends StatefulWidget {
   const FourthScreen({super.key});
@@ -22,18 +28,47 @@ class _FourthScreenState extends State<FourthScreen> {
   List pages = [
     ProgressSecondScreen(),
     ProgressThirdScreen(),
-    ProgressSecondScreen(),
-    ProgressThirdScreen(),
-    ProgressSecondScreen(),
-    ProgressThirdScreen(),
-    ProgressSecondScreen(),
-    ProgressThirdScreen(),
-    ProgressSecondScreen(),
+    ProgressFourthScreen(),
+    ProgressFifthScreen(),
+    Progress6ThScreen(),
+    Progress7thScreen()
+    // ProgressSecondScreen(),
+    // ProgressThirdScreen(),
+    // ProgressSecondScreen(),
+    // ProgressThirdScreen(),
+    // ProgressSecondScreen(),
+    // ProgressThirdScreen(),
+    // ProgressSecondScreen(),
   ];
+  @override
+  void initState() {
+    // TODO: implement initState
+    progressController.businesslogo == File('');
+    print(progressController.businesslogo.path);
+    super.initState();
+  }
+
   PageController pageController = PageController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // bottomNavigationBar: Container(
+      //   color: Colors.white,
+      //   height: 35.0.hp,
+      //   child: BottomNavigationBar(items: [
+      //     BottomNavigationBarItem(
+      //         icon: SizedBox(
+      //             height: 20.0.hp, child: Image.asset("image/bottomleft.png")),
+      //         label: ""),
+      //     BottomNavigationBarItem(
+      //         icon: SizedBox(
+      //           height: 28.0.hp,
+      //         ),
+      //         label: "Swipe"),
+      //     BottomNavigationBarItem(
+      //         icon: Image.asset("image/rightsidebottom.png"), label: ""),
+      //   ]),
+      // ),
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
@@ -70,7 +105,9 @@ class _FourthScreenState extends State<FourthScreen> {
                 height: 1.0.hp,
               ),
               ProgressIndicatorWithIcon(),
-              Expanded(
+              Container(
+                // color: Colors.amber,
+                height: 45.0.hp,
                 child: PageView.builder(
                   itemCount: pages.length,
                   // controller: pageController,
@@ -85,7 +122,47 @@ class _FourthScreenState extends State<FourthScreen> {
                     return pages[index];
                   },
                 ),
-              )
+              ),
+              Expanded(
+                  child: Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Container(
+                        // color: Colors.amber,
+                        height: 20.0.hp,
+                        child: Image.asset("image/bottomleft.png")),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Visibility(
+                          visible: progressController.percentage.value == 0
+                              ? false
+                              : true,
+                          child: SizedBox(
+                              // height: 10.0.hp,
+                              child: Image.asset("image/leftarrow.png")),
+                        ),
+                        Text(
+                          "Swipe",
+                          style: TextStyle(
+                              color: Color(0xff8facdb), fontSize: 12.0.sp),
+                        ),
+                        Visibility(
+                          visible: progressController.percentage.value == 8
+                              ? false
+                              : true,
+                          child: SizedBox(
+                              // height: 10.0.hp,
+                              child: Image.asset("image/arrow.png")),
+                        )
+                      ],
+                    ),
+                    SizedBox(child: Image.asset("image/rightsidebottom.png")),
+                  ],
+                ),
+              ))
             ],
           ),
         ),
@@ -114,7 +191,7 @@ class _FourthScreenState extends State<FourthScreen> {
                 height: 5.0.hp,
               ),
               Text(
-                "Business Profile",
+                progressController.title[index],
                 style: GoogleFonts.poppins(
                     fontSize: 18.0.sp,
                     color: Colors.blue.shade900,
