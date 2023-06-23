@@ -1,9 +1,9 @@
-// import 'package:doctorapp/utils/constants/const.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:task_1/const/responsive/res.dart';
-import 'package:task_1/controller/progressbarcontroller.dart';
+
+import '../controller/progressbarcontroller.dart';
 
 class ProgressIndicatorWithIcon extends StatefulWidget {
   // var percentage;
@@ -30,20 +30,21 @@ class _ProgressIndicatorWithIconState extends State<ProgressIndicatorWithIcon> {
           : progressController.percentage.value == 1
               ? 0.2
               : progressController.percentage.value == 2
-                  ? 0.3
+                  ? 0.4
                   : progressController.percentage.value == 3
-                      ? 0.4
+                      ? 0.6
                       : progressController.percentage.value == 4
-                          ? 0.5
+                          ? 0.8
                           : progressController.percentage.value == 5
-                              ? 0.6
+                              ? 0.9
                               : progressController.percentage.value == 6
-                                  ? 0.7
-                                  : progressController.percentage.value == 7
-                                      ? 0.8
-                                      : progressController.percentage.value == 8
-                                          ? 0.9
-                                          : 1,
+                                  ? 1
+                                  : 1,
+      // : progressController.percentage.value == 7
+      //     ? 0.8
+      //     : progressController.percentage.value == 8
+      //         ? 0.9
+      //         : 1,
       //  widget.percentage,
       alignment: MainAxisAlignment.center,
       barRadius: Radius.circular(5.0.sp),

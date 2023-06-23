@@ -1,16 +1,13 @@
 import 'dart:io';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:task_1/const/colors/colorsconfig.dart';
 import 'package:task_1/const/responsive/res.dart';
+import 'package:task_1/controller/progressbarcontroller.dart';
+import 'package:task_1/widgets/minibuttonmodel.dart';
 import 'package:task_1/widgets/titlecontent.dart';
-
-import '../controller/progressbarcontroller.dart';
-import '../widgets/minibuttonmodel.dart';
 
 class Progress6ThScreen extends StatefulWidget {
   const Progress6ThScreen({super.key});

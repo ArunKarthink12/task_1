@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get/route_manager.dart';
-// import 'package:get/get.dart';
-import 'package:task_1/View/secondscreen.dart';
-// import 'package:get/get.dart';
+import 'package:get/get.dart';
 import 'package:task_1/const/responsive/res.dart';
+
+import 'second_screen.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({

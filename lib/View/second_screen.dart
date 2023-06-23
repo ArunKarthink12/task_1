@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:task_1/const/responsive/res.dart';
+import 'package:task_1/const/storage/dB_1.dart';
+import 'package:task_1/controller/progressbarcontroller.dart';
 
 import 'thirdScreen.dart';
 
@@ -21,11 +25,35 @@ class _SecondScreenState extends State<SecondScreen> {
     });
   }
 
-  bool select = true;
+  @override
+  void initState() {
+    // TODO: implement initState
+    // storage();
+    super.initState();
+  }
 
+  String? mail;
+  String? password;
+  // storage() async {
+  //   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  //   mail = sharedPreferences.getString(
+  //     Constants.email,
+  //   );
+  //   password = sharedPreferences.getString(
+  //     Constants.password,
+  //   );
+  //   progressController.email.text =
+  //       progressController.userName.text.isEmpty ? mail.toString() : "";
+  //   progressController.logInPasWord.text =
+  //       progressController.logInPasWord.text.isEmpty ? mail.toString() : "";
+  // }
+
+  bool select = true;
+  ProgressController progressController = Get.put(ProgressController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.blueAccent,
       body: SafeArea(
         child: SizedBox(
@@ -81,21 +109,24 @@ class _SecondScreenState extends State<SecondScreen> {
               width: 84.0.wp,
               color: const Color(0xffD9D9D9).withOpacity(0.1),
               child: TextFormField(
-                keyboardType: TextInputType.number,
+                controller: progressController.loginuserName,
+                // keyboardType: TextInputType.number,
                 style: GoogleFonts.jost(
                     textStyle: TextStyle(
                         fontSize: 10.0.sp,
-                        color: Colors.amber,
+                        color: Colors.black,
                         fontWeight: FontWeight.w500)),
                 decoration: InputDecoration(
                     errorBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20.0.sp),
                         borderSide:
                             const BorderSide(color: Colors.red, width: 1)),
+                    // borderSide:
+                    //     const BorderSide(color: Colors.red, width: 1)),
                     focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(5.0),
+                      borderRadius: BorderRadius.circular(20.0.sp),
                       borderSide:
-                          const BorderSide(color: Colors.black, width: 1),
+                          const BorderSide(color: Colors.transparent, width: 1),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20.0.sp),
@@ -123,20 +154,24 @@ class _SecondScreenState extends State<SecondScreen> {
               color: const Color(0xffD9D9D9).withOpacity(0.1),
               width: 84.0.wp,
               child: TextFormField(
+                controller: progressController.logInPasWord,
                 obscureText: _isPinnewHidden,
                 style: GoogleFonts.jost(
                     textStyle: TextStyle(
                         fontSize: 10.0.sp,
-                        color: Colors.amber,
+                        color: Colors.black,
                         fontWeight: FontWeight.w500)),
                 decoration: InputDecoration(
                   errorBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20.0.sp),
                       borderSide:
                           const BorderSide(color: Colors.red, width: 1)),
+                  // borderSide:
+                  //     const BorderSide(color: Colors.red, width: 1)),
                   focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(5.0),
-                    borderSide: const BorderSide(color: Colors.black, width: 1),
+                    borderRadius: BorderRadius.circular(20.0.sp),
+                    borderSide:
+                        const BorderSide(color: Colors.transparent, width: 1),
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20.0.sp),
@@ -260,8 +295,20 @@ class _SecondScreenState extends State<SecondScreen> {
   Widget buttons() {
     return GestureDetector(
       onTap: () {
-        // Get.toNamed('/1stScreen');
-        // Get.to(const SecondScreen());
+        if (progressController.loginuserName.text.isEmpty) {
+          Fluttertoast.showToast(msg: "Enter Username");
+        } else if (progressController.logInPasWord.text.isEmpty) {
+          Fluttertoast.showToast(msg: "Enter Password");
+        } else if (progressController.logInPasWord.text.length < 6) {
+          Fluttertoast.showToast(msg: "Password length Should 6 ");
+        } else if (progressController.loginuserName.text ==
+                progressController.userName.text &&
+            progressController.logInPasWord.text ==
+                progressController.passWord.text) {
+          Fluttertoast.showToast(msg: "LogIn SuccessFully");
+        } else {
+          Fluttertoast.showToast(msg: "UnAuth LogIn ");
+        }
       },
       child: Container(
         height: 5.8.hp,
@@ -345,19 +392,23 @@ class _SecondScreenState extends State<SecondScreen> {
           width: 50.0.wp,
           color: const Color(0xffD9D9D9).withOpacity(0.1),
           child: TextFormField(
+            controller: progressController.MobileNumber,
             keyboardType: TextInputType.number,
             style: GoogleFonts.jost(
                 textStyle: TextStyle(
                     fontSize: 10.0.sp,
-                    color: Colors.amber,
+                    color: Colors.black,
                     fontWeight: FontWeight.w500)),
             decoration: InputDecoration(
                 errorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20.0.sp),
                     borderSide: const BorderSide(color: Colors.red, width: 1)),
+                // borderSide:
+                //     const BorderSide(color: Colors.red, width: 1)),
                 focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(5.0),
-                  borderSide: const BorderSide(color: Colors.black, width: 1),
+                  borderRadius: BorderRadius.circular(20.0.sp),
+                  borderSide:
+                      const BorderSide(color: Colors.transparent, width: 1),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20.0.sp),
@@ -382,6 +433,16 @@ class _SecondScreenState extends State<SecondScreen> {
           onTap: () {
             // Get.toNamed('/1stScreen');
             // Get.to(const SecondScreen());
+            if (progressController.MobileNumber.text.isEmpty) {
+              Fluttertoast.showToast(msg: "Enter MobileNumber");
+            } else if (progressController.MobileNumber.text.length < 10 ||
+                progressController.MobileNumber.text.length > 10) {
+              Fluttertoast.showToast(
+                  msg: "MobileNumber should be in 10 Digits");
+            } else {
+              Fluttertoast.showToast(
+                  msg: "Otp Send To Your Register Mobile Number");
+            }
           },
           child: Container(
             height: 5.0.hp,

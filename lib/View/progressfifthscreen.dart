@@ -1,7 +1,8 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:task_1/const/responsive/res.dart';
+import 'package:task_1/controller/progressbarcontroller.dart';
 import 'package:task_1/widgets/titlecontent.dart';
 
 class ProgressFifthScreen extends StatefulWidget {
@@ -12,6 +13,7 @@ class ProgressFifthScreen extends StatefulWidget {
 }
 
 class _ProgressFifthScreenState extends State<ProgressFifthScreen> {
+  ProgressController progressController = Get.put(ProgressController());
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -39,38 +41,94 @@ class _ProgressFifthScreenState extends State<ProgressFifthScreen> {
             SizedBox(
               height: 2.0.hp,
             ),
-            fields(15.0.hp,
-                "Enter your business overview for about \npage description"),
+            fields(
+                15.0.hp,
+                "Enter your business overview for about \npage description",
+                progressController.description),
             SizedBox(
               height: 2.0.hp,
             ),
-            fields(8.0.hp, "Email"),
+            fields(8.0.hp, "Email", progressController.email
+                //  progressController.descriptionMail
+                ),
             SizedBox(
               height: 2.0.hp,
             ),
-            fields(8.0.hp, "Existing Website URL(Optional)"),
+            fields(8.0.hp, "Existing Website URL(Optional)",
+                progressController.webSitUrl),
           ],
         ),
       ),
     );
   }
 
-  Widget fields(height, title) {
+  Widget fields(height, title, controller) {
     return Container(
       height: height,
       width: MediaQuery.of(context).size.width - 25.0.wp,
       decoration: BoxDecoration(
           border: Border.all(color: Color(0xff6198f2), width: 1),
           borderRadius: BorderRadius.circular(10.0.sp)),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Text(
-          title,
-          maxLines: 2,
-          style: TextStyle(fontSize: 8.0.sp, color: Colors.grey),
-        ),
-      ),
       alignment: Alignment.topLeft,
+      child: Padding(
+        padding: EdgeInsets.all(8.0),
+        child: TextFormField(
+          controller: controller,
+          // obscureText: _isPinnewHidden,
+          style: GoogleFonts.jost(
+              textStyle: TextStyle(
+                  fontSize: 10.0.sp,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w500)),
+          decoration: InputDecoration(
+            errorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20.0.sp),
+                borderSide: const BorderSide(color: Colors.red, width: 1)),
+            // borderSide:
+            //     const BorderSide(color: Colors.red, width: 1)),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(20.0.sp),
+              borderSide: const BorderSide(color: Colors.transparent, width: 1),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(20.0.sp),
+              borderSide: BorderSide(color: Colors.transparent, width: 1),
+            ),
+            fillColor: const Color(0xffC6C6C6),
+            hintText: title,
+            contentPadding: const EdgeInsets.only(left: 10),
+            hintStyle: GoogleFonts.jost(
+                textStyle: TextStyle(
+                    fontSize: 10.0.sp,
+                    color: Colors.grey,
+                    fontWeight: FontWeight.w500)),
+            border: const OutlineInputBorder(
+              gapPadding: 4.0,
+            ),
+            // suffixIcon: InkWell(
+            //   onTap: () {
+            //     // _togglecnewPinView();
+            //   },
+            //   child: Padding(
+            //     padding:
+            //         const EdgeInsets.only(top: 15, left: 3, bottom: 15),
+            //     // child: Icon(
+            //     //   _isPinnewHidden
+            //     //       ? Icons.visibility
+            //     //       : Icons.visibility_off,
+            //     //   size: MediaQuery.of(context).size.height * 0.025,
+            //     //   color: const Color(0xffC6C6C6),
+            //     // ),
+            //   ),
+            // ),
+          ),
+        ),
+        //  Text(
+        //   title,
+        //   maxLines: 2,
+        //   style: TextStyle(fontSize: 8.0.sp, color: Colors.grey),
+        // ),
+      ),
     );
   }
 }

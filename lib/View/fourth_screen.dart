@@ -3,18 +3,18 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:task_1/View/fifthScreen.dart';
-import 'package:task_1/View/progressfifthscreen.dart';
-import 'package:task_1/View/sixthscreen.dart';
-// import 'package:task_1/View/secondscreen.dart';
-// import 'package:task_1/View/thirdScreen.dart';
+import 'package:task_1/View/final_screen.dart';
+import 'package:task_1/View/progress2.dart';
+import 'package:task_1/View/seventhscreen.dart';
 import 'package:task_1/const/responsive/res.dart';
 import 'package:task_1/controller/progressbarcontroller.dart';
 import 'package:task_1/widgets/progressbar.dart';
 
-import 'progress2.dart';
+import 'fifthScreen.dart';
 import 'progress_thirdScreen.dart';
+import 'progressfifthscreen.dart';
 import 'progressfourthscreen.dart';
+import 'sixthscreen.dart';
 
 class FourthScreen extends StatefulWidget {
   const FourthScreen({super.key});
@@ -31,14 +31,9 @@ class _FourthScreenState extends State<FourthScreen> {
     ProgressFourthScreen(),
     ProgressFifthScreen(),
     Progress6ThScreen(),
-    Progress7thScreen()
-    // ProgressSecondScreen(),
-    // ProgressThirdScreen(),
-    // ProgressSecondScreen(),
-    // ProgressThirdScreen(),
-    // ProgressSecondScreen(),
-    // ProgressThirdScreen(),
-    // ProgressSecondScreen(),
+    Progress7thScreen(),
+    Progress8thScreen(),
+    // FinalScreen()
   ];
   @override
   void initState() {
@@ -52,6 +47,7 @@ class _FourthScreenState extends State<FourthScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       // bottomNavigationBar: Container(
       //   color: Colors.white,
       //   height: 35.0.hp,
@@ -115,6 +111,9 @@ class _FourthScreenState extends State<FourthScreen> {
                     progressController.percentage.value = value;
                     // progressController.logos[value] = value;
                     pageController.jumpToPage(value);
+                    // progressController.percentage.value == 7
+                    //     ? Get.to(FinalScreen())
+                    //     : null;
                     setState(() {});
                   },
                   scrollDirection: Axis.horizontal,

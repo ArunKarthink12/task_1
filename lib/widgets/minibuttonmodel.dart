@@ -1,7 +1,10 @@
-// import 'package:flutter/foundation.dart';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:task_1/View/data_Screen.dart';
+import 'package:task_1/View/second_screen.dart';
 import 'package:task_1/const/responsive/res.dart';
 
 import '../controller/progressbarcontroller.dart';
@@ -36,13 +39,34 @@ class MiniButtonModel extends StatefulWidget {
 
 class _MiniButtonModelState extends State<MiniButtonModel> {
   ProgressController progressController = Get.put(ProgressController());
+  logOut() {
+    progressController.MobileNumber.text = '';
+    progressController.addressLine.text = '';
+    progressController.businesslogo = File("");
+    progressController.city.text = "";
+    progressController.currentLocation = '';
+    progressController.description.text = '';
+    progressController.pincode.text = '';
+    progressController.webSitUrl.text = '';
+    progressController.email.text = '';
+    progressController.selectedImages = [];
+
+    Get.to(SecondScreen());
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Future.delayed(Duration.zero, () async {
-          await progressController.profilefilepicker();
-        });
+        widget.title == "DashBoard"
+            ? Get.to(const DataOfThis())
+            : widget.title == "Website"
+                ? Fluttertoast.showToast(msg: "Website")
+                : widget.title == "Go Back To LogIn"
+                    ? logOut()
+                    : Future.delayed(Duration.zero, () async {
+                        await progressController.profilefilepicker();
+                      });
       },
       child: Container(
           height: 5.0.hp,

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-// import 'package:google_fonts/google_fonts.dart';
 import 'package:task_1/const/responsive/res.dart';
 import 'package:task_1/widgets/buttons.dart';
-
-import '../widgets/titlecontent.dart';
+import 'package:task_1/widgets/titlecontent.dart';
 
 const List<String> list = <String>['Choose', 'SoftWare Developer', 'B2C', 'IT'];
 

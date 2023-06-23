@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -29,8 +30,35 @@ class ProgressController extends GetxController {
     "Datas"
   ];
   File businesslogo = File("");
-  File ibusinesslogo = File("");
+
   final emptyFile = File('');
+  List<File> selectedImages = [];
+  // var removeimage;
+  var currentLocation;
+  //create
+  TextEditingController userName = TextEditingController();
+  String userNameString = "";
+  TextEditingController email = TextEditingController();
+  String emailString = "";
+  TextEditingController passWord = TextEditingController();
+  String passWordString = "";
+  // TextEditingController newpasWord = TextEditingController();
+
+  ///login
+  TextEditingController loginuserName = TextEditingController();
+
+  TextEditingController logInPasWord = TextEditingController();
+  TextEditingController MobileNumber = TextEditingController();
+//add business description
+  TextEditingController description = TextEditingController();
+  TextEditingController descriptionMail = TextEditingController();
+  TextEditingController webSitUrl = TextEditingController();
+//location
+  TextEditingController pincode = TextEditingController();
+  TextEditingController city = TextEditingController();
+  TextEditingController addressLine = TextEditingController();
+  // TextEditingController addressLine = TextEditingController();
+
   Future profilefilepicker() async {
     var result = await ImagePicker().pickImage(source: ImageSource.gallery);
     final file = File(result!.path);
@@ -44,16 +72,16 @@ class ProgressController extends GetxController {
     }
   }
 
-  Future iprofilefilepicker() async {
-    var result = await ImagePicker().pickImage(source: ImageSource.gallery);
-    final file = File(result!.path);
+  // Future iprofilefilepicker() async {
+  //   var result = await ImagePicker().pickImage(source: ImageSource.gallery);
+  //   final file = File(result!.path);
 
-    if (result != null) {
-      // setState(() {
-      ibusinesslogo = file;
-      // });
-    } else {
-      return null;
-    }
-  }
+  //   if (result != null) {
+  //     // setState(() {
+  //     ibusinesslogo = file;
+  //     // });
+  //   } else {
+  //     return null;
+  //   }
+  // }
 }

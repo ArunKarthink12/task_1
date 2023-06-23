@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:task_1/const/responsive/res.dart';
+import 'package:task_1/controller/progressbarcontroller.dart';
 import 'package:task_1/widgets/buttons.dart';
-
-import '../widgets/titlecontent.dart';
+import 'package:task_1/widgets/titlecontent.dart';
 
 const List<String> list = <String>['Choose', 'SoftWare Developer', 'B2C', 'IT'];
-const List<String> list1 = <String>['State', 'TamilNadu', 'xxxxx', 'xxxxx'];
+const List<String> list1 = <String>['State', 'TamilNadu', 'Goa', 'PuD'];
 
 class ProgressThirdScreen extends StatefulWidget {
   const ProgressThirdScreen({super.key});
@@ -17,7 +19,7 @@ class ProgressThirdScreen extends StatefulWidget {
 class _ProgressThirdScreenState extends State<ProgressThirdScreen> {
   String dropdownValue = list.first;
   String dropdownValue1 = list1.first;
-
+  ProgressController progressController = Get.put(ProgressController());
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -93,34 +95,170 @@ class _ProgressThirdScreenState extends State<ProgressThirdScreen> {
               height: 2.0.hp,
             ),
             ProgressBarButtons(
-                customizedWidget: Text(
-              "City",
-              style: const TextStyle(color: Colors.grey),
-            )),
+              customizedWidget: TextFormField(
+                controller: progressController.city,
+                // obscureText: _isPinnewHidden,
+                style: GoogleFonts.jost(
+                    textStyle: TextStyle(
+                        fontSize: 10.0.sp,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w500)),
+                decoration: InputDecoration(
+                  errorBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20.0.sp),
+                      borderSide:
+                          const BorderSide(color: Colors.red, width: 1)),
+                  // borderSide:
+                  //     const BorderSide(color: Colors.red, width: 1)),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20.0.sp),
+                    borderSide:
+                        const BorderSide(color: Colors.transparent, width: 1),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20.0.sp),
+                    borderSide: BorderSide(color: Colors.transparent, width: 1),
+                  ),
+                  fillColor: const Color(0xffC6C6C6),
+                  hintText: "City",
+                  contentPadding: EdgeInsets.only(left: 33.0.wp),
+                  hintStyle: GoogleFonts.jost(
+                      textStyle: TextStyle(
+                          fontSize: 10.0.sp,
+                          color: Colors.grey,
+                          fontWeight: FontWeight.w500)),
+                  border: const OutlineInputBorder(
+                    gapPadding: 4.0,
+                  ),
+                ),
+              ),
+            ),
             SizedBox(
               height: 2.0.hp,
             ),
             ProgressBarButtons(
-                customizedWidget: Text(
-              "Pincode",
-              style: const TextStyle(color: Colors.grey),
-            )),
+              customizedWidget: TextFormField(
+                controller: progressController.pincode,
+                // obscureText: _isPinnewHidden,
+                style: GoogleFonts.jost(
+                    textStyle: TextStyle(
+                        fontSize: 10.0.sp,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w500)),
+                decoration: InputDecoration(
+                  errorBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20.0.sp),
+                      borderSide:
+                          const BorderSide(color: Colors.red, width: 1)),
+                  // borderSide:
+                  //     const BorderSide(color: Colors.red, width: 1)),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20.0.sp),
+                    borderSide:
+                        const BorderSide(color: Colors.transparent, width: 1),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20.0.sp),
+                    borderSide: BorderSide(color: Colors.transparent, width: 1),
+                  ),
+                  fillColor: const Color(0xffC6C6C6),
+                  hintText: "Pincode",
+                  contentPadding: EdgeInsets.only(left: 32.0.wp),
+                  hintStyle: GoogleFonts.jost(
+                      textStyle: TextStyle(
+                          fontSize: 10.0.sp,
+                          color: Colors.grey,
+                          fontWeight: FontWeight.w500)),
+                  border: const OutlineInputBorder(
+                    gapPadding: 4.0,
+                  ),
+                ),
+              ),
+            ),
             SizedBox(
               height: 2.0.hp,
             ),
             ProgressBarButtons(
-                customizedWidget: Text(
-              "Address Line",
-              style: const TextStyle(color: Colors.grey),
-            )),
+              customizedWidget: TextFormField(
+                controller: progressController.addressLine,
+                // obscureText: _isPinnewHidden,
+                style: GoogleFonts.jost(
+                    textStyle: TextStyle(
+                        fontSize: 10.0.sp,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w500)),
+                decoration: InputDecoration(
+                  errorBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20.0.sp),
+                      borderSide:
+                          const BorderSide(color: Colors.red, width: 1)),
+                  // borderSide:
+                  //     const BorderSide(color: Colors.red, width: 1)),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20.0.sp),
+                    borderSide:
+                        const BorderSide(color: Colors.transparent, width: 1),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20.0.sp),
+                    borderSide: BorderSide(color: Colors.transparent, width: 1),
+                  ),
+                  fillColor: const Color(0xffC6C6C6),
+                  hintText: "Address Line",
+                  contentPadding: EdgeInsets.only(left: 27.0.wp),
+                  hintStyle: GoogleFonts.jost(
+                      textStyle: TextStyle(
+                          fontSize: 10.0.sp,
+                          color: Colors.grey,
+                          fontWeight: FontWeight.w500)),
+                  border: const OutlineInputBorder(
+                    gapPadding: 4.0,
+                  ),
+                ),
+              ),
+            ),
             SizedBox(
               height: 2.0.hp,
             ),
             ProgressBarButtons(
-                customizedWidget: Text(
-              "Mobile Number",
-              style: const TextStyle(color: Colors.grey),
-            )),
+              customizedWidget: TextFormField(
+                controller: progressController.MobileNumber,
+                // obscureText: _isPinnewHidden,
+                style: GoogleFonts.jost(
+                    textStyle: TextStyle(
+                        fontSize: 10.0.sp,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w500)),
+                decoration: InputDecoration(
+                  errorBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20.0.sp),
+                      borderSide:
+                          const BorderSide(color: Colors.red, width: 1)),
+                  // borderSide:
+                  //     const BorderSide(color: Colors.red, width: 1)),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20.0.sp),
+                    borderSide:
+                        const BorderSide(color: Colors.transparent, width: 1),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20.0.sp),
+                    borderSide: BorderSide(color: Colors.transparent, width: 1),
+                  ),
+                  fillColor: const Color(0xffC6C6C6),
+                  hintText: "Mobile Number",
+                  contentPadding: EdgeInsets.only(left: 25.0.wp),
+                  hintStyle: GoogleFonts.jost(
+                      textStyle: TextStyle(
+                          fontSize: 10.0.sp,
+                          color: Colors.grey,
+                          fontWeight: FontWeight.w500)),
+                  border: const OutlineInputBorder(
+                    gapPadding: 4.0,
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
